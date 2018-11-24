@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">MercaExpress</string>
+    <string name="title_home">Inicio</string>
+    <string name="title_cart">Carrito</string>
+    <string name="title_user_profile">Perfil</string>
+    <string name="title_offert">Promos</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="Text_puntos_acumulados">Puntos Acumulados:</string>
+    <string name="Text_security">Seguridad</string>
+    <string name="Text_user">Mis datos</string>
+    <string name="Text_contact">Comunicate con nosotros</string>
+    <string name="Text_login">Ingresar a market xpress</string>
+    <string name="profile_configuracion_section">Configuración</string>
+</resources>

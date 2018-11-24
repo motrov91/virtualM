@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Fragments.PerfilFragment"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Mi Cuenta"
+        android:gravity="center"
+        android:textSize="18sp"
+        android:background="@color/colorPrimaryDark"
+        android:padding="@dimen/Margin_top_20dp"
+        android:textColor="@color/colorText"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/Margin_top_20dp">
+        <ImageView
+            android:layout_width="@dimen/ic_size_40dp"
+            android:layout_height="@dimen/ic_size_40dp"
+            android:src="@drawable/ahorro"
+            android:layout_marginLeft="@dimen/Margin_top_20dp"/>
+        <TextView
+            android:id="@+id/txt_puntos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/Text_puntos_acumulados"
+            android:layout_marginLeft="@dimen/Margin_CardView_10dp"
+            android:layout_gravity="center"/>
+        <TextView
+            android:id="@+id/cant_puntos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="00000"
+            android:layout_marginLeft="@dimen/Margin_left_10dp"
+            android:layout_gravity="center"/>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="#c6c5c5"
+        android:layout_marginTop="@dimen/Margin_10dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/profile_configuracion_section"
+        android:layout_margin="@dimen/Margin_top_20dp"/>
+
+    <LinearLayout
+        android:id="@+id/container_datos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <ImageView
+            android:layout_width="@dimen/ic_size_40dp"
+            android:layout_height="@dimen/ic_size_40dp"
+            android:src="@drawable/user"
+            android:layout_marginLeft="@dimen/Margin_top_20dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/Text_user"
+            android:layout_marginLeft="@dimen/Margin_CardView_10dp"
+            android:layout_gravity="center"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/container_security"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/Margin_left_10dp">
+        <ImageView
+            android:layout_width="@dimen/ic_size_40dp"
+            android:layout_height="@dimen/ic_size_40dp"
+            android:src="@drawable/security"
+            android:layout_marginLeft="@dimen/Margin_top_20dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/Text_security"
+            android:layout_marginLeft="@dimen/Margin_CardView_10dp"
+            android:layout_gravity="center"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/container_contact"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/Margin_left_10dp">
+        <ImageView
+            android:layout_width="@dimen/ic_size_40dp"
+            android:layout_height="@dimen/ic_size_40dp"
+            android:src="@drawable/contacto"
+            android:layout_marginLeft="@dimen/Margin_top_20dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/Text_contact"
+            android:layout_marginLeft="@dimen/Margin_CardView_10dp"
+            android:layout_gravity="center"/>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="3dp"
+                android:background="#c6c5c5"
+                android:layout_marginTop="@dimen/Margin_10dp"
+                android:layout_above="@id/container_login"/>
+            <LinearLayout
+                android:id="@+id/container_login"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_alignParentBottom="true"
+                android:layout_marginLeft="@dimen/Margin_20dp"
+                android:layout_marginTop="@dimen/Margin_left_10dp"
+                android:layout_marginBottom="@dimen/Margin_left_10dp">
+
+
+                <ImageView
+                    android:layout_width="@dimen/ic_size_40dp"
+                    android:layout_height="@dimen/ic_size_40dp"
+                    android:src="@drawable/user" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="@dimen/Margin_CardView_10dp"
+                    android:text="@string/Text_login" />
+
+        </LinearLayout>
+
+
+
+    </RelativeLayout>
+
+
+
+</LinearLayout>
