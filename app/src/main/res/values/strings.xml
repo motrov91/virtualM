@@ -13,4 +13,9 @@
     <string name="Text_contact">Comunicate con nosotros</string>
     <string name="Text_login">Ingresar a market xpress</string>
     <string name="profile_configuracion_section">Configuración</string>
+    <string name="nom_usuario_login">nombre del usuario</string>
+    <string name="btn_ingresar_login">Ingresar</string>
+    <string name="password_login">Contraseña</string>
+    <string name="olvidar_pass_login">Olvide mi contraseña</string>
+    <string name="crear_una_cuenta_login">Crear una cuenta</string>
 </resources>
