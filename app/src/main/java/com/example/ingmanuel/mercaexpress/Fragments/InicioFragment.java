@@ -24,6 +24,7 @@ public class InicioFragment extends Fragment{
     private ViewPager viewPager;
     private ViewPagerAdapter adapter;
     private TabLayout tabLayout;
+    private String textoGuardado;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -54,10 +55,7 @@ public class InicioFragment extends Fragment{
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+        this.adapter = new ViewPagerAdapter(getChildFragmentManager());
     }
 
     @Override
@@ -108,4 +106,12 @@ public class InicioFragment extends Fragment{
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }
+
+    @Override
+    public void onSaveInstanceState (Bundle outState){
+        super.onSaveInstanceState(outState);
+
+        outState.putString("contenido", textoGuardado);
+    }
+
 }

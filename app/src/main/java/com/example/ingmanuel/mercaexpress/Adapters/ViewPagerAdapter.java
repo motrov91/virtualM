@@ -5,13 +5,14 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentStatePagerAdapter;
 import android.util.Log;
 import android.view.ViewGroup;
 
 import com.example.ingmanuel.mercaexpress.Fragments.Categories.AseoFragment;
 import com.example.ingmanuel.mercaexpress.Fragments.Categories.LacteosFragment;
 
-public class ViewPagerAdapter extends FragmentPagerAdapter {
+public class ViewPagerAdapter extends FragmentStatePagerAdapter {
     public ViewPagerAdapter(FragmentManager fm) {
         super(fm);
     }

@@ -6,6 +6,7 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 
@@ -25,7 +26,6 @@ public class MainActivity extends AppCompatActivity implements InicioFragment.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
@@ -41,7 +41,6 @@ public class MainActivity extends AppCompatActivity implements InicioFragment.On
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
             Fragment fragmentInicio, fragmentCarrito, fragmentPerfil;
-
 
             switch (item.getItemId()) {
                 case R.id.nav_home:
@@ -59,7 +58,6 @@ public class MainActivity extends AppCompatActivity implements InicioFragment.On
                     getSupportFragmentManager().beginTransaction().replace(R.id.FragmentContainer,fragmentPerfil).commit();
                     return true;
             }
-
 
             return false;
         }
