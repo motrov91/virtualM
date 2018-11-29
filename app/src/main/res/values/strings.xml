@@ -18,4 +18,5 @@
     <string name="password_login">Contraseña</string>
     <string name="olvidar_pass_login">Olvide mi contraseña</string>
     <string name="crear_una_cuenta_login">Crear una cuenta</string>
+    <string name="price_simbol">$</string>
 </resources>
