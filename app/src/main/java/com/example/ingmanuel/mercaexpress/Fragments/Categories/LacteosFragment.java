@@ -4,12 +4,18 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.ingmanuel.mercaexpress.Adapters.ProductsAdapter;
+import com.example.ingmanuel.mercaexpress.Models.ProductsModel;
 import com.example.ingmanuel.mercaexpress.R;
+
+import java.util.ArrayList;
 
 
 /**
@@ -23,6 +29,10 @@ import com.example.ingmanuel.mercaexpress.R;
 public class LacteosFragment extends Fragment {
 
     private TextView txunico;
+    private RecyclerView recyclerProducts;
+    private ArrayList<ProductsModel> productList;
+
+
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -71,10 +81,22 @@ public class LacteosFragment extends Fragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_lacteos, container, false);
 
-        txunico = v.findViewById(R.id.tvUnico);
 
+        productList = new ArrayList<>();
+        recyclerProducts = v.findViewById(R.id.recycler_milk);
+        recyclerProducts.setLayoutManager(new GridLayoutManager(getContext(),2));
+
+        llenarLista();
+
+        ProductsAdapter adapter =  new ProductsAdapter(productList);
+        recyclerProducts.setAdapter(adapter);
 
         return v;
+    }
+
+    private void llenarLista() {
+
+        productList.add(new ProductsModel(1,1,R.drawable.ahorro, "Arroz Blanquita", "2000", "Arroz blanquita 500gr", "No", "No"));
     }
 
     // TODO: Rename method, update argument and hook method into UI event
