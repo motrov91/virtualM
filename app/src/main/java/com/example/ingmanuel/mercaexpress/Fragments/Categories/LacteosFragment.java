@@ -97,6 +97,10 @@ public class LacteosFragment extends Fragment {
     private void llenarLista() {
 
         productList.add(new ProductsModel(1,1,R.drawable.ahorro, "Arroz Blanquita", "2000", "Arroz blanquita 500gr", "No", "No"));
+        productList.add(new ProductsModel(2,1,R.drawable.ahorro, "Arroz Roa", "1900", "Arroz Roa 500gr", "No", "No"));
+        productList.add(new ProductsModel(3,1,R.drawable.ahorro, "Arroz Popular", "1500", "Arroz popular 500gr", "No", "No"));
+        productList.add(new ProductsModel(1,1,R.drawable.ahorro, "Arroz Lider", "1600", "Arroz Blanco 400gr", "No", "No"));
+
     }
 
     // TODO: Rename method, update argument and hook method into UI event

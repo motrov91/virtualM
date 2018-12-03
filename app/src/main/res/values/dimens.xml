@@ -9,4 +9,5 @@
     <dimen name="ic_size_40dp">35dp</dimen>
     <dimen name="Margin_20dp">20dp</dimen>
     <dimen name="Btn_login_ingresar">40dp</dimen>
+    <dimen name="marginLeftProduct">8dp</dimen>
 </resources>
