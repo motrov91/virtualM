@@ -9,8 +9,12 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 
 import com.example.ingmanuel.mercaexpress.Adapters.ViewPagerAdapter;
@@ -55,15 +59,16 @@ public class InicioFragment extends Fragment{
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
         this.adapter = new ViewPagerAdapter(getChildFragmentManager());
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         View v = inflater.inflate(R.layout.fragment_inicio, container, false);
 
-        toolbar = v.findViewById(R.id.toolBar);
         ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
 
         viewPager = v.findViewById(R.id.pager);
@@ -72,6 +77,14 @@ public class InicioFragment extends Fragment{
 
         tabLayout = v.findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
+
+        toolbar = v.findViewById(R.id.toolbar);
+        ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
+
+        if (((AppCompatActivity)getActivity()).getSupportActionBar()!= null){
+            ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+
 
 
         return v;
@@ -112,6 +125,26 @@ public class InicioFragment extends Fragment{
         super.onSaveInstanceState(outState);
 
         outState.putString("contenido", textoGuardado);
+    }
+
+    /**Metodo para poder inflar nuestro menu en el Toolbar**/
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.menu_toolbar, menu);
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    /**metodo para obtener el id del menu para poder colocar el Onclick**/
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+       switch (item.getItemId()){
+           case R.id.search:
+               Toast.makeText(getContext(), "boton de busqueda", Toast.LENGTH_SHORT).show();
+               default:
+                   return super.onOptionsItemSelected(item);
+       }
+
+
     }
 
 }

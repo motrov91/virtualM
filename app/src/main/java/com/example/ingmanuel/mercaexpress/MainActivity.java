@@ -8,6 +8,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
 import com.example.ingmanuel.mercaexpress.Fragments.CarritoFragment;
@@ -26,13 +27,14 @@ public class MainActivity extends AppCompatActivity implements InicioFragment.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+       //
+
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction().replace(R.id.FragmentContainer, new InicioFragment()).commit();
     }
-
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -67,4 +69,5 @@ public class MainActivity extends AppCompatActivity implements InicioFragment.On
     public void onFragmentInteraction(Uri uri) {
 
     }
+
 }
