@@ -12,7 +12,11 @@ import android.view.ViewGroup;
 import com.example.ingmanuel.mercaexpress.Fragments.Categories.AseoFragment;
 import com.example.ingmanuel.mercaexpress.Fragments.Categories.LacteosFragment;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ViewPagerAdapter extends FragmentStatePagerAdapter {
+
     public ViewPagerAdapter(FragmentManager fm) {
         super(fm);
     }

@@ -7,6 +7,7 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -14,9 +15,11 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.Toast;
 
 
+import com.example.ingmanuel.mercaexpress.Adapters.ProductsAdapter;
 import com.example.ingmanuel.mercaexpress.Adapters.ViewPagerAdapter;
 import com.example.ingmanuel.mercaexpress.R;
 
@@ -28,6 +31,7 @@ public class InicioFragment extends Fragment{
     private ViewPager viewPager;
     private ViewPagerAdapter adapter;
     private TabLayout tabLayout;
+    private EditText toolbarSearch;
     private String textoGuardado;
 
     // TODO: Rename parameter arguments, choose names that match
@@ -81,12 +85,6 @@ public class InicioFragment extends Fragment{
         toolbar = v.findViewById(R.id.toolbar);
         ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
 
-        if (((AppCompatActivity)getActivity()).getSupportActionBar()!= null){
-            ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        }
-
-
-
         return v;
     }
 
@@ -127,24 +125,5 @@ public class InicioFragment extends Fragment{
         outState.putString("contenido", textoGuardado);
     }
 
-    /**Metodo para poder inflar nuestro menu en el Toolbar**/
-    @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        inflater.inflate(R.menu.menu_toolbar, menu);
-        super.onCreateOptionsMenu(menu, inflater);
-    }
-
-    /**metodo para obtener el id del menu para poder colocar el Onclick**/
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-       switch (item.getItemId()){
-           case R.id.search:
-               Toast.makeText(getContext(), "boton de busqueda", Toast.LENGTH_SHORT).show();
-               default:
-                   return super.onOptionsItemSelected(item);
-       }
-
-
-    }
 
 }

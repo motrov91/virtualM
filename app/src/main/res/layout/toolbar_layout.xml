@@ -9,4 +9,3 @@
     app:titleTextColor="@color/colorText">
 
 </android.support.v7.widget.Toolbar>
-

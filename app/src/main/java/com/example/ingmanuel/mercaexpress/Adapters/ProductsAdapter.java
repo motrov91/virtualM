@@ -6,6 +6,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -13,13 +15,16 @@ import com.example.ingmanuel.mercaexpress.Models.ProductsModel;
 import com.example.ingmanuel.mercaexpress.R;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ViewHolderDatos> {
+public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ViewHolderDatos> implements Filterable {
 
-    ArrayList<ProductsModel> listProducts;
+    List<ProductsModel> listProducts;
+    List<ProductsModel> listProductComplete;
 
-    public ProductsAdapter(ArrayList<ProductsModel> listProducts) {
+    public ProductsAdapter(List<ProductsModel> listProducts) {
         this.listProducts = listProducts;
+        listProductComplete = new ArrayList<>(listProducts);
     }
 
     @NonNull
@@ -41,6 +46,39 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ViewHo
     public int getItemCount() {
         return listProducts.size();
     }
+
+    /**Metodo para realizar busquedas dentro del recycler**/
+    @Override
+    public Filter getFilter() {
+        return listaCursosFiltrada;
+    }
+
+    private Filter listaCursosFiltrada = new Filter() {
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint) {
+            List<ProductsModel> listaFiltradaDeProductos = new ArrayList<>();
+            if (constraint == null || constraint.length()==0){
+                listaFiltradaDeProductos.addAll(listProductComplete);
+            }else{
+                String filterPatter = constraint.toString().toLowerCase().trim();
+                for (ProductsModel product:listProductComplete){
+                    if (product.getProductName().toLowerCase().contains(filterPatter)){
+                        listaFiltradaDeProductos.add(product);
+                    }
+                }
+            }
+            FilterResults results = new FilterResults();
+            results.values = listaFiltradaDeProductos;
+            return results;
+        }
+        /**Muestra en pantalla el resultado re la busqueda filtrada**/
+        @Override
+        protected void publishResults(CharSequence constraint, FilterResults results) {
+            listProducts.clear();
+            listProducts.addAll((List)results.values);
+            notifyDataSetChanged();
+        }
+    };
 
     public class ViewHolderDatos extends RecyclerView.ViewHolder {
 

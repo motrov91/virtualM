@@ -6,15 +6,19 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
+import android.view.inputmethod.EditorInfo;
 
 import com.example.ingmanuel.mercaexpress.Adapters.ProductsAdapter;
 import com.example.ingmanuel.mercaexpress.Models.ProductsModel;
 import com.example.ingmanuel.mercaexpress.R;
-
 import java.util.ArrayList;
 
 
@@ -28,9 +32,10 @@ import java.util.ArrayList;
  */
 public class LacteosFragment extends Fragment {
 
-    private TextView txunico;
     private RecyclerView recyclerProducts;
     private ArrayList<ProductsModel> productList;
+    private ProductsAdapter adapter;
+
 
 
     // TODO: Rename parameter arguments, choose names that match
@@ -69,6 +74,7 @@ public class LacteosFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
@@ -81,14 +87,13 @@ public class LacteosFragment extends Fragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_lacteos, container, false);
 
-
         productList = new ArrayList<>();
         recyclerProducts = v.findViewById(R.id.recycler_milk);
         recyclerProducts.setLayoutManager(new GridLayoutManager(getContext(),2));
 
         llenarLista();
 
-        ProductsAdapter adapter =  new ProductsAdapter(productList);
+        adapter =  new ProductsAdapter(productList);
         recyclerProducts.setAdapter(adapter);
 
         return v;
@@ -122,6 +127,27 @@ public class LacteosFragment extends Fragment {
     }
 
     @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.menu_toolbar, menu);
+
+        MenuItem searchItem = menu.findItem(R.id.search);
+        SearchView searchView = (SearchView) searchItem.getActionView();
+        searchView.setImeOptions(EditorInfo.IME_ACTION_DONE);
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+                adapter.getFilter().filter(s);
+                return false;
+            }
+        });
+    }
+
+    @Override
     public void onDetach() {
         super.onDetach();
         mListener = null;
@@ -140,5 +166,15 @@ public class LacteosFragment extends Fragment {
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.search:
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }
