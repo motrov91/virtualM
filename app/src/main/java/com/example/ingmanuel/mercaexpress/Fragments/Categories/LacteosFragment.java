@@ -1,5 +1,6 @@
 package com.example.ingmanuel.mercaexpress.Fragments.Categories;
 
+import android.app.Activity;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
@@ -15,8 +16,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
+import android.widget.Toast;
 
 import com.example.ingmanuel.mercaexpress.Adapters.ProductsAdapter;
+import com.example.ingmanuel.mercaexpress.Interface.IcomunicaFragmentProduct;
 import com.example.ingmanuel.mercaexpress.Models.ProductsModel;
 import com.example.ingmanuel.mercaexpress.R;
 import java.util.ArrayList;
@@ -35,6 +38,10 @@ public class LacteosFragment extends Fragment {
     private RecyclerView recyclerProducts;
     private ArrayList<ProductsModel> productList;
     private ProductsAdapter adapter;
+
+    Activity activity;
+    IcomunicaFragmentProduct icomunicaFragmentProduct;
+
 
 
 
@@ -96,12 +103,25 @@ public class LacteosFragment extends Fragment {
         adapter =  new ProductsAdapter(productList);
         recyclerProducts.setAdapter(adapter);
 
+        /**Desde aqui capturamos el evento onclick**/
+        onclick();
+
         return v;
+    }
+
+    private void onclick() {
+        adapter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                icomunicaFragmentProduct.sendProduct(productList.get(recyclerProducts.getChildAdapterPosition(v)));
+            }
+        });
+
     }
 
     private void llenarLista() {
 
-        productList.add(new ProductsModel(1,1,R.drawable.ahorro, "Arroz Blanquita", "2000", "B lanquita 500gr", "No", "No"));
+        productList.add(new ProductsModel(1,1,R.drawable.ahorro, "Arroz Blanquita", "2000", "Arroz Blanquita 500gr", "No", "No"));
         productList.add(new ProductsModel(2,1,R.drawable.ahorro, "Arroz Roa", "1900", "Arroz Roa 500gr", "No", "No"));
         productList.add(new ProductsModel(3,1,R.drawable.ahorro, "Arroz Popular", "1500", "Arroz popular 500gr", "No", "No"));
         productList.add(new ProductsModel(1,1,R.drawable.ahorro, "Arroz Lider", "1600", "Arroz Blanco 400gr", "No", "No"));
@@ -118,6 +138,12 @@ public class LacteosFragment extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
+
+        if (context instanceof Activity){
+            this.activity = (Activity) context;
+            icomunicaFragmentProduct = (IcomunicaFragmentProduct) this.activity;
+        }
+
         if (context instanceof OnFragmentInteractionListener) {
             mListener = (OnFragmentInteractionListener) context;
         } else {

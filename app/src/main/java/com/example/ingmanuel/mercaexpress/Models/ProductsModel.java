@@ -1,6 +1,8 @@
 package com.example.ingmanuel.mercaexpress.Models;
 
-public class ProductsModel {
+import java.io.Serializable;
+
+public class ProductsModel implements Serializable {
 
     private int idProduct;
     private int idcategory;

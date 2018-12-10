@@ -16,10 +16,13 @@ import com.example.ingmanuel.mercaexpress.Fragments.Categories.AseoFragment;
 import com.example.ingmanuel.mercaexpress.Fragments.InicioFragment;
 import com.example.ingmanuel.mercaexpress.Fragments.Categories.LacteosFragment;
 import com.example.ingmanuel.mercaexpress.Fragments.PerfilFragment;
+import com.example.ingmanuel.mercaexpress.Fragments.ProductDetail;
+import com.example.ingmanuel.mercaexpress.Interface.IcomunicaFragmentProduct;
+import com.example.ingmanuel.mercaexpress.Models.ProductsModel;
 
 public class MainActivity extends AppCompatActivity implements InicioFragment.OnFragmentInteractionListener,
     CarritoFragment.OnFragmentInteractionListener, PerfilFragment.OnFragmentInteractionListener, LacteosFragment.OnFragmentInteractionListener,
-        AseoFragment.OnFragmentInteractionListener {
+        AseoFragment.OnFragmentInteractionListener, ProductDetail.OnFragmentInteractionListener, IcomunicaFragmentProduct{
 
 
     @Override
@@ -69,4 +72,14 @@ public class MainActivity extends AppCompatActivity implements InicioFragment.On
 
     }
 
+    @Override
+    public void sendProduct(ProductsModel product) {
+        ProductDetail productDetail = new ProductDetail();
+        Bundle bundleEnvio = new Bundle();
+        bundleEnvio.putSerializable("objeto", product);
+        productDetail.setArguments(bundleEnvio);
+
+        //Cargar el fragment en la activity
+        getSupportFragmentManager().beginTransaction().replace(R.id.FragmentContainer, productDetail).addToBackStack(null).commit();
+    }
 }

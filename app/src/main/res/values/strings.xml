@@ -18,4 +18,12 @@
     <string name="password_login">Contraseña</string>
     <string name="olvidar_pass_login">Olvide mi contraseña</string>
     <string name="crear_una_cuenta_login">Crear una cuenta</string>
+    <string name="category_detail">Categoria:  </string>
+    <string name="nombre_del_producto_detail">Nombre del producto</string>
+    <string name="nombre_de_la_categoria_detail">Nombre de la categoria</string>
+    <string name="price_simbol_detail">$</string>
+    <string name="value_detail">000000</string>
+    <string name="descripci_n_detauil">Descripción:</string>
+    <string name="description_product_detail">Aqui va a ir la descripcion del producto detalladamente</string>
+    <string name="agregar_detail_prudctu">Agregar</string>
 </resources>

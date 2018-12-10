@@ -17,10 +17,12 @@ import com.example.ingmanuel.mercaexpress.R;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ViewHolderDatos> implements Filterable {
+public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ViewHolderDatos> implements Filterable, View.OnClickListener {
 
     List<ProductsModel> listProducts;
     List<ProductsModel> listProductComplete;
+
+    private View.OnClickListener listener;
 
     public ProductsAdapter(List<ProductsModel> listProducts) {
         this.listProducts = listProducts;
@@ -31,6 +33,10 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ViewHo
     @Override
     public ViewHolderDatos onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_product, null, false);
+
+        /**Implementacion del onclick listener**/
+        v.setOnClickListener(this);
+
         return new ViewHolderDatos(v);
     }
 
@@ -79,6 +85,17 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ViewHo
             notifyDataSetChanged();
         }
     };
+    /**Constructor del onclick**/
+    public void setOnClickListener(View.OnClickListener listener){
+        this.listener = listener;
+    }
+
+    @Override
+    public void onClick(View v) {
+        if (listener != null ){
+            listener.onClick(v);
+        }
+    }
 
     public class ViewHolderDatos extends RecyclerView.ViewHolder {
 
