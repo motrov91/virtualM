@@ -73,10 +73,11 @@ public class InicioFragment extends Fragment{
 
         View v = inflater.inflate(R.layout.fragment_inicio, container, false);
 
-        ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
 
         viewPager = v.findViewById(R.id.pager);
-        adapter = new ViewPagerAdapter(((AppCompatActivity)getActivity()).getSupportFragmentManager());
+        //adapter = new ViewPagerAdapter(((AppCompatActivity)getActivity()).getSupportFragmentManager());
+        //El getChildFragmentManager permite cargar los datos otra vez al momento de volver al fragment anterior
+        adapter = new ViewPagerAdapter(getChildFragmentManager());
         viewPager.setAdapter(adapter);
 
         tabLayout = v.findViewById(R.id.tabs);

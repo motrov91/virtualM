@@ -4,8 +4,13 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
@@ -29,6 +34,7 @@ public class ProductDetail extends Fragment implements View.OnClickListener {
 
     ImageView imageDetail;
     TextView nameDetail, nameCategoty, priceDetail, descDetail;
+    private String textoGuardado;
 
 
 
@@ -71,6 +77,7 @@ public class ProductDetail extends Fragment implements View.OnClickListener {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
@@ -95,6 +102,9 @@ public class ProductDetail extends Fragment implements View.OnClickListener {
 
         decrease.setOnClickListener(this);
         increase.setOnClickListener(this);
+
+
+
 
         /**Obteniendo el bundle con el producto**/
         Bundle objectProduct = getArguments();
@@ -175,4 +185,14 @@ public class ProductDetail extends Fragment implements View.OnClickListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch(item.getItemId()){
+            case android.R.id.home:
+                getActivity().onBackPressed();
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
 }

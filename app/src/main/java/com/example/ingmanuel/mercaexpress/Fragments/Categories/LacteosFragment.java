@@ -8,21 +8,21 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+
 import android.view.inputmethod.EditorInfo;
-import android.widget.Toast;
 
 import com.example.ingmanuel.mercaexpress.Adapters.ProductsAdapter;
 import com.example.ingmanuel.mercaexpress.Interface.IcomunicaFragmentProduct;
 import com.example.ingmanuel.mercaexpress.Models.ProductsModel;
 import com.example.ingmanuel.mercaexpress.R;
 import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -41,9 +41,6 @@ public class LacteosFragment extends Fragment {
 
     Activity activity;
     IcomunicaFragmentProduct icomunicaFragmentProduct;
-
-
-
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -81,6 +78,7 @@ public class LacteosFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getActivity().invalidateOptionsMenu();
         setHasOptionsMenu(true);
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
@@ -91,6 +89,7 @@ public class LacteosFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_lacteos, container, false);
 
@@ -154,8 +153,11 @@ public class LacteosFragment extends Fragment {
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        /** Importante para evitar la duplicacion del icono del toolbar**/
+        super.onCreateOptionsMenu(menu, inflater);
+        menu.clear();
+        /**-----------------------------------------------------------**/
         inflater.inflate(R.menu.menu_toolbar, menu);
-
         MenuItem searchItem = menu.findItem(R.id.search);
         SearchView searchView = (SearchView) searchItem.getActionView();
         searchView.setImeOptions(EditorInfo.IME_ACTION_DONE);
@@ -198,7 +200,6 @@ public class LacteosFragment extends Fragment {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
             case R.id.search:
-
             default:
                 return super.onOptionsItemSelected(item);
         }
