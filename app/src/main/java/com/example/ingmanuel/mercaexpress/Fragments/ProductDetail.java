@@ -1,6 +1,8 @@
 package com.example.ingmanuel.mercaexpress.Fragments;
 
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -103,7 +105,12 @@ public class ProductDetail extends Fragment implements View.OnClickListener {
         decrease.setOnClickListener(this);
         increase.setOnClickListener(this);
 
-
+        Toolbar toolbar = v.findViewById(R.id.toolbardetail);
+        toolbar.setTitleTextColor(Color.parseColor("#FFFFFF"));
+        AppCompatActivity activity = (AppCompatActivity) getActivity();
+        activity.setSupportActionBar(toolbar);
+        activity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        activity.getSupportActionBar().setDisplayShowTitleEnabled(false);
 
 
         /**Obteniendo el bundle con el producto**/

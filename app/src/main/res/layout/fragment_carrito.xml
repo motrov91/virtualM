@@ -3,13 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fragments.CarritoFragment">
+    tools:context=".Fragments.CarritoFragment"
+    android:layout_margin="5dp">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <ListView
+        android:id="@+id/list_car"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Fragment Carrito"
-        android:gravity="center"/>
+        android:layout_height="wrap_content"
+        android:divider="@android:color/background_light"
+        android:dividerHeight="2dp"/>
 
 </FrameLayout>
